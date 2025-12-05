@@ -1,0 +1,12 @@
+# Security Policy
+# This is a personal portfolio project
+
+Contact: https://github.com/your-username/calculator/issues
+Expires: 2025-12-31T23:59:59.000Z
+Preferred-Languages: en
+Canonical: https://your-username.github.io/calculator/.well-known/security.txt
+
+# Project Information
+Policy: This is a static website hosted on GitHub Pages. 
+It contains only client-side HTML, CSS, and JavaScript.
+No server-side processing or data collection occurs.

@@ -67,6 +67,20 @@ A stunning, fully-featured web-based scientific calculator with calculus operati
 - 🌈 Color-coded button categories
 - 📱 Fully responsive design
 
+## 🛡️ Security Note
+
+**Antivirus False Positive:** Some antivirus software (particularly Norton) may flag this site as new GitHub Pages sites are sometimes flagged automatically. This is a **false positive**. The code is:
+- ✅ 100% client-side (no server execution)
+- ✅ Open source (view all code on GitHub)
+- ✅ No data collection or tracking
+- ✅ Hosted on GitHub's secure infrastructure
+- ✅ Uses only standard Web APIs
+
+If flagged, you can:
+1. View the source code to verify safety
+2. Report false positive to your antivirus provider
+3. Run locally by downloading the files
+
 ## 📦 Quick Deployment
 
 ### GitHub Pages Setup
