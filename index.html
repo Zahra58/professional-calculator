@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Scientific Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <div class="calculator-header">
+                <h1>Scientific Calculator</h1>
+            </div>
+            <input type="text" id="display" class="display" placeholder="0" readonly>
+            
+            <div class="buttons-grid">
+                <button class="btn btn-number" data-value="7">7</button>
+                <button class="btn btn-number" data-value="8">8</button>
+                <button class="btn btn-number" data-value="9">9</button>
+                <button class="btn btn-operator" data-value="/">÷</button>
+                <button class="btn btn-function" data-value="sin">sin</button>
+                
+                <button class="btn btn-number" data-value="4">4</button>
+                <button class="btn btn-number" data-value="5">5</button>
+                <button class="btn btn-number" data-value="6">6</button>
+                <button class="btn btn-operator" data-value="*">×</button>
+                <button class="btn btn-function" data-value="cos">cos</button>
+                
+                <button class="btn btn-number" data-value="1">1</button>
+                <button class="btn btn-number" data-value="2">2</button>
+                <button class="btn btn-number" data-value="3">3</button>
+                <button class="btn btn-operator" data-value="-">−</button>
+                <button class="btn btn-function" data-value="tan">tan</button>
+                
+                <button class="btn btn-number" data-value="0">0</button>
+                <button class="btn btn-number" data-value=".">.</button>
+                <button class="btn btn-operator btn-equals" data-value="=">=</button>
+                <button class="btn btn-operator" data-value="+">+</button>
+                <button class="btn btn-function" data-value="log">log</button>
+                
+                <button class="btn btn-number" data-value="(">(</button>
+                <button class="btn btn-number" data-value=")">)</button>
+                <button class="btn btn-function" data-value="exp">eˣ</button>
+                <button class="btn btn-function" data-value="d/dx">d/dx</button>
+                <button class="btn btn-function" data-value="sqrt">√</button>
+                
+                <button class="btn btn-operator" data-value="^">xʸ</button>
+                <button class="btn btn-delete" data-value="<">⌫</button>
+                <button class="btn btn-function" data-value="∫">∫</button>
+                <button class="btn btn-clear" data-value="Clear">C</button>
+                <button class="btn btn-clear" data-value="delete">AC</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
