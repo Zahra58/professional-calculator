@@ -14,6 +14,50 @@
     --surface-light: #252b4a;
 }
 
+/* Light Neon Theme */
+body.light-theme {
+    --primary-glow: #00cc88;
+    --secondary-glow: #0099ff;
+    --accent-glow: #ff0088;
+    --dark-bg: #f0f4f8;
+    --darker-bg: #e2e8f0;
+    --surface: #ffffff;
+    --surface-light: #f8fafc;
+}
+
+body.light-theme .display {
+    color: #1a1f3a;
+}
+
+body.light-theme .expression-line {
+    color: #64748b;
+}
+
+body.light-theme .calculator-header h1 {
+    color: #00cc88;
+}
+
+body.light-theme .control-btn {
+    color: #00cc88;
+}
+
+body.light-theme .history-header h2 {
+    color: #00cc88;
+}
+
+body.light-theme .history-item .result {
+    color: #00cc88;
+}
+
+body.light-theme .btn-number {
+    background: linear-gradient(145deg, #ffffff, #f1f5f9);
+    color: #1a1f3a;
+}
+
+body.light-theme .btn-number:hover {
+    background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+}
+
 body {
     font-family: 'Rajdhani', sans-serif;
     background: var(--darker-bg);
@@ -69,9 +113,16 @@ body {
     max-height: 700px;
     display: flex;
     flex-direction: column;
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.history-panel.hidden {
+    transform: translateX(-320px);
     opacity: 0;
-    transform: translateX(-30px);
-    animation: slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    pointer-events: none;
 }
 
 @keyframes slideInLeft {
@@ -189,18 +240,21 @@ body {
 /* Calculator */
 .calculator-wrapper {
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .calculator {
     background: linear-gradient(145deg, var(--surface), var(--dark-bg));
     border-radius: 25px;
-    padding: 30px;
+    padding: 35px;
     box-shadow: 
         0 30px 60px rgba(0, 0, 0, 0.5),
         0 0 0 1px rgba(0, 255, 170, 0.1) inset,
         0 0 40px rgba(0, 255, 170, 0.1);
     width: 100%;
-    max-width: 480px;
+    max-width: 520px;
 }
 
 .calculator-header {

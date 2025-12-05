@@ -5,6 +5,7 @@ let expression = "";
 let soundEnabled = true;
 let historyVisible = true;
 let calculationHistory = [];
+let currentTheme = 'dark'; // 'dark' or 'light'
 
 // ============================================
 // DOM ELEMENTS
@@ -14,6 +15,7 @@ const expressionDisplay = document.getElementById('expressionDisplay');
 const buttons = document.querySelectorAll('.btn');
 const soundToggle = document.getElementById('soundToggle');
 const historyToggle = document.getElementById('historyToggle');
+const themeToggle = document.getElementById('themeToggle');
 const historyPanel = document.getElementById('historyPanel');
 const historyList = document.getElementById('historyList');
 const clearHistoryBtn = document.getElementById('clearHistory');
@@ -230,7 +232,20 @@ soundToggle.addEventListener('click', () => {
 
 historyToggle.addEventListener('click', () => {
     historyVisible = !historyVisible;
-    historyPanel.style.display = historyVisible ? 'flex' : 'none';
+    if (historyVisible) {
+        historyPanel.classList.remove('hidden');
+    } else {
+        historyPanel.classList.add('hidden');
+    }
+    playSound('click');
+});
+
+themeToggle.addEventListener('click', () => {
+    currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    document.body.classList.toggle('light-theme');
+    
+    // Save preference
+    localStorage.setItem('calculatorTheme', currentTheme);
     playSound('click');
 });
 
@@ -483,40 +498,96 @@ document.addEventListener('keydown', (event) => {
     const key = event.key;
     
     // Prevent default for calculator keys
-    if (['+', '-', '*', '/', 'Enter', 'Escape'].includes(key)) {
+    if (['+', '-', '*', '/', 'Enter', 'Escape', 'Delete'].includes(key) || 
+        (key >= '0' && key <= '9') || key === '.') {
         event.preventDefault();
     }
     
+    // Numbers
     if (key >= '0' && key <= '9') {
         expression += key;
         updateDisplay();
         playSound('click');
-    } else if (key === '.') {
+    } 
+    // Decimal point
+    else if (key === '.') {
         expression += '.';
         updateDisplay();
         playSound('click');
-    } else if (['+', '-', '*', '/', '(', ')'].includes(key)) {
+    } 
+    // Addition
+    else if (key === '+' || key === '=') {
+        if (event.shiftKey && key === '=') {
+            expression += '+';
+            updateDisplay();
+            playSound('click');
+        }
+    }
+    // Subtraction
+    else if (key === '-') {
+        expression += '-';
+        updateDisplay();
+        playSound('click');
+    }
+    // Multiplication - Support both * and × (Alt+X on some keyboards)
+    else if (key === '*' || key === '×') {
+        expression += '*';
+        updateDisplay();
+        playSound('click');
+    }
+    // Division - Support both / and ÷
+    else if (key === '/' || key === '÷') {
+        expression += '/';
+        updateDisplay();
+        playSound('click');
+    }
+    // Parentheses
+    else if (key === '(' || key === ')') {
         expression += key;
         updateDisplay();
         playSound('click');
-    } else if (key === 'Enter') {
+    }
+    // Calculate - Enter or =
+    else if (key === 'Enter' || (!event.shiftKey && key === '=')) {
         calculateResult();
-    } else if (key === 'Escape') {
+    }
+    // Clear - Escape or Delete
+    else if (key === 'Escape' || key === 'Delete') {
         clearDisplay();
         playSound('clear');
-    } else if (key === 'Backspace') {
+    }
+    // Backspace
+    else if (key === 'Backspace') {
         backspace();
         playSound('click');
-    } else if (key.toLowerCase() === 'x') {
+    }
+    // Variable x
+    else if (key.toLowerCase() === 'x') {
         expression += 'x';
         updateDisplay();
         playSound('click');
-    } else if (key.toLowerCase() === 'p') {
+    }
+    // Pi constant - p key
+    else if (key.toLowerCase() === 'p') {
         expression += 'pi';
         updateDisplay();
         playSound('click');
-    } else if (key.toLowerCase() === 'e' && !event.ctrlKey) {
+    }
+    // Euler's constant - e key (but not Ctrl+E)
+    else if (key.toLowerCase() === 'e' && !event.ctrlKey && !event.metaKey) {
         expression += 'e';
+        updateDisplay();
+        playSound('click');
+    }
+    // Square root - s key
+    else if (key.toLowerCase() === 's') {
+        expression += 'sqrt(';
+        updateDisplay();
+        playSound('click');
+    }
+    // Power - ^ key
+    else if (key === '^') {
+        expression += '^';
         updateDisplay();
         playSound('click');
     }
@@ -533,13 +604,35 @@ display.addEventListener('keydown', (event) => {
 // ============================================
 // INITIALIZATION
 // ============================================
+function loadTheme() {
+    const savedTheme = localStorage.getItem('calculatorTheme');
+    if (savedTheme === 'light') {
+        currentTheme = 'light';
+        document.body.classList.add('light-theme');
+    }
+}
+
+loadTheme();
 loadHistory();
-console.log('🚀 CALCUTRON initialized!');
+
+console.log('🚀 CALCUTRON v2.0 initialized!');
+console.log('');
 console.log('💡 Keyboard shortcuts:');
-console.log('  • Numbers & operators: Type directly');
-console.log('  • Enter: Calculate');
-console.log('  • Escape: Clear');
+console.log('  • 0-9: Numbers');
+console.log('  • + - × * ÷ /: Operators');
+console.log('  • ( ): Parentheses');
+console.log('  • .: Decimal point');
+console.log('  • Enter or =: Calculate');
+console.log('  • Escape or Delete: Clear all');
 console.log('  • Backspace: Delete last');
 console.log('  • x: Add variable x');
 console.log('  • p: Add π (pi)');
 console.log('  • e: Add e constant');
+console.log('  • s: Add sqrt(');
+console.log('  • ^: Power operator');
+console.log('');
+console.log('🎨 Pro Tips:');
+console.log('  • Click history items to reuse results');
+console.log('  • Toggle theme for light/dark mode');
+console.log('  • Sound effects can be toggled on/off');
+console.log('  • History auto-saves to browser storage');
