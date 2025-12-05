@@ -5,7 +5,7 @@ A **stunning**, fully-featured web-based scientific calculator with calculus ope
 ![Calculator Preview](https://img.shields.io/badge/Status-Production%20Ready-brightgreen)
 ![Version](https://img.shields.io/badge/Version-2.0-blue)
 
-## 🚀 Features
+##  Features
 
 ### **Core Mathematics**
 - ✅ **Basic Operations**: Addition, subtraction, multiplication, division
@@ -34,11 +34,11 @@ A **stunning**, fully-featured web-based scientific calculator with calculus ope
 - Color-coded button categories for instant recognition
 - Expression preview line above main display
 
-## 🎮 Live Demo
+##  Live Demo
 
-Once deployed, your calculator will be available at: `https://your-username.github.io/calculator/`
+ `https://zahra58.github.io/professional-calculator/`
 
-## 📦 Quick Start
+##  Quick Start
 
 ### Deployment to GitHub Pages
 
@@ -58,7 +58,7 @@ cd path/to/calculator/files
 
 git init
 git add .
-git commit -m "🚀 Deploy CALCUTRON"
+git commit -m " Deploy CALCUTRON"
 git remote add origin https://github.com/YOUR-USERNAME/calculator.git
 git branch -M main
 git push -u origin main
@@ -75,7 +75,7 @@ git push -u origin main
 7. Visit: https://YOUR-USERNAME.github.io/calculator/
 ```
 
-## 🎹 Keyboard Shortcuts
+##  Keyboard Shortcuts
 
 | Key | Action |
 |-----|--------|
@@ -90,7 +90,7 @@ git push -u origin main
 | `p` | Add π (pi) |
 | `e` | Add e constant |
 
-## 🎨 Color Scheme
+##  Color Scheme
 
 - **Primary Glow**: #00ffaa (Neon Green)
 - **Numbers**: Dark Gray (#252b4a)
@@ -102,7 +102,7 @@ git push -u origin main
 - **Constants**: Teal (#14b8a6)
 - **Variable**: Purple (#8b5cf6)
 
-## 🛠️ Technologies Used
+##  Technologies Used
 
 - **HTML5**: Semantic structure
 - **CSS3**: Advanced animations, gradients, and effects
@@ -112,7 +112,7 @@ git push -u origin main
 - **Canvas API**: Particle animation background
 - **LocalStorage**: History persistence
 
-## 📱 Browser Compatibility
+##  Browser Compatibility
 
 Tested and working on:
 - ✅ Chrome 90+
@@ -121,7 +121,7 @@ Tested and working on:
 - ✅ Edge 90+
 - ✅ Mobile browsers (iOS Safari, Chrome Mobile)
 
-## 🎯 Usage Examples
+##  Usage Examples
 
 ### Basic Calculation
 ```
@@ -192,7 +192,7 @@ const particleCount = 80; // Change this number
 ### Modify Sound Effects
 In `script.js`, edit frequency values in `playSound()` function
 
-## 📁 File Structure
+##  File Structure
 
 ```
 calculator/
@@ -203,13 +203,13 @@ calculator/
 └── README.md           # This file
 ```
 
-## 🐛 Known Issues
+##  Known Issues
 
 - Symbolic integration limited to basic functions
 - Complex nested expressions may need parentheses
 - History limited to 50 most recent calculations
 
-## 🔮 Future Enhancements
+##  Future Enhancements
 
 - [ ] Matrix operations
 - [ ] Graphing calculator mode
@@ -231,7 +231,7 @@ Feel free to fork and improve! Some ideas:
 
 Free to use and modify for personal and commercial projects.
 
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - **Math.js** - Powerful math library
 - **Google Fonts** - Orbitron & Rajdhani fonts
