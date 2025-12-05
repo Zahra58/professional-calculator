@@ -4,55 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Scientific Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <div class="calculator">
-            <div class="calculator-header">
-                <h1>Scientific Calculator</h1>
+    <div class="app-container">
+        <!-- History Panel -->
+        <div class="history-panel" id="historyPanel">
+            <div class="history-header">
+                <h2>History</h2>
+                <button class="history-clear-btn" id="clearHistory">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>
+                </button>
             </div>
-            <input type="text" id="display" class="display" placeholder="0" readonly>
-            
-            <div class="buttons-grid">
-                <button class="btn btn-number" data-value="7">7</button>
-                <button class="btn btn-number" data-value="8">8</button>
-                <button class="btn btn-number" data-value="9">9</button>
-                <button class="btn btn-operator" data-value="/">÷</button>
-                <button class="btn btn-function" data-value="sin">sin</button>
+            <div class="history-list" id="historyList">
+                <div class="history-empty">No calculations yet</div>
+            </div>
+        </div>
+
+        <!-- Main Calculator -->
+        <div class="calculator-wrapper">
+            <div class="calculator">
+                <div class="calculator-header">
+                    <h1>CALCUTRON</h1>
+                    <div class="controls">
+                        <button class="control-btn" id="soundToggle" title="Toggle Sound">
+                            <svg class="sound-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                            </svg>
+                            <svg class="sound-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+                                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                <line x1="23" y1="9" x2="17" y2="15"></line>
+                                <line x1="17" y1="9" x2="23" y2="15"></line>
+                            </svg>
+                        </button>
+                        <button class="control-btn" id="historyToggle" title="Toggle History">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
                 
-                <button class="btn btn-number" data-value="4">4</button>
-                <button class="btn btn-number" data-value="5">5</button>
-                <button class="btn btn-number" data-value="6">6</button>
-                <button class="btn btn-operator" data-value="*">×</button>
-                <button class="btn btn-function" data-value="cos">cos</button>
+                <div class="display-container">
+                    <div class="expression-line" id="expressionDisplay"></div>
+                    <input type="text" id="display" class="display" placeholder="0" readonly>
+                </div>
                 
-                <button class="btn btn-number" data-value="1">1</button>
-                <button class="btn btn-number" data-value="2">2</button>
-                <button class="btn btn-number" data-value="3">3</button>
-                <button class="btn btn-operator" data-value="-">−</button>
-                <button class="btn btn-function" data-value="tan">tan</button>
-                
-                <button class="btn btn-number" data-value="0">0</button>
-                <button class="btn btn-number" data-value=".">.</button>
-                <button class="btn btn-operator btn-equals" data-value="=">=</button>
-                <button class="btn btn-operator" data-value="+">+</button>
-                <button class="btn btn-function" data-value="log">log</button>
-                
-                <button class="btn btn-number" data-value="(">(</button>
-                <button class="btn btn-number" data-value=")">)</button>
-                <button class="btn btn-function" data-value="exp">eˣ</button>
-                <button class="btn btn-function" data-value="d/dx">d/dx</button>
-                <button class="btn btn-function" data-value="sqrt">√</button>
-                
-                <button class="btn btn-operator" data-value="^">xʸ</button>
-                <button class="btn btn-delete" data-value="<">⌫</button>
-                <button class="btn btn-function" data-value="∫">∫</button>
-                <button class="btn btn-clear" data-value="Clear">C</button>
-                <button class="btn btn-clear" data-value="delete">AC</button>
+                <div class="buttons-grid">
+                    <!-- Scientific Functions Row 1 -->
+                    <button class="btn btn-function" data-value="sin" data-category="trig">sin</button>
+                    <button class="btn btn-function" data-value="cos" data-category="trig">cos</button>
+                    <button class="btn btn-function" data-value="tan" data-category="trig">tan</button>
+                    <button class="btn btn-function" data-value="log" data-category="math">log</button>
+                    <button class="btn btn-function" data-value="sqrt" data-category="math">√</button>
+                    
+                    <!-- Scientific Functions Row 2 -->
+                    <button class="btn btn-function" data-value="exp" data-category="math">eˣ</button>
+                    <button class="btn btn-function" data-value="^" data-category="math">xʸ</button>
+                    <button class="btn btn-number" data-value="(">(</button>
+                    <button class="btn btn-number" data-value=")">)</button>
+                    <button class="btn btn-delete" data-value="<">⌫</button>
+                    
+                    <!-- Calculus Functions Row -->
+                    <button class="btn btn-calculus" data-value="d/dx" data-category="calculus">d/dx</button>
+                    <button class="btn btn-calculus" data-value="∫" data-category="calculus">∫dx</button>
+                    <button class="btn btn-clear" data-value="Clear">C</button>
+                    <button class="btn btn-clear" data-value="delete">AC</button>
+                    <button class="btn btn-operator" data-value="/">÷</button>
+                    
+                    <!-- Number Pad -->
+                    <button class="btn btn-number" data-value="7">7</button>
+                    <button class="btn btn-number" data-value="8">8</button>
+                    <button class="btn btn-number" data-value="9">9</button>
+                    <button class="btn btn-operator" data-value="*">×</button>
+                    <button class="btn btn-operator" data-value="-">−</button>
+                    
+                    <button class="btn btn-number" data-value="4">4</button>
+                    <button class="btn btn-number" data-value="5">5</button>
+                    <button class="btn btn-number" data-value="6">6</button>
+                    <button class="btn btn-operator" data-value="+">+</button>
+                    <button class="btn btn-pi" data-value="pi" data-category="constant">π</button>
+                    
+                    <button class="btn btn-number" data-value="1">1</button>
+                    <button class="btn btn-number" data-value="2">2</button>
+                    <button class="btn btn-number" data-value="3">3</button>
+                    <button class="btn btn-operator btn-equals" data-value="=">=</button>
+                    <button class="btn btn-e" data-value="e" data-category="constant">e</button>
+                    
+                    <button class="btn btn-number btn-zero" data-value="0">0</button>
+                    <button class="btn btn-number" data-value=".">.</button>
+                    <button class="btn btn-x" data-value="x" data-category="variable">x</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <!-- Particle Background -->
+    <canvas id="particleCanvas"></canvas>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
     <script src="script.js"></script>
