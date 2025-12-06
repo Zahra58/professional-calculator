@@ -66,8 +66,16 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     position: relative;
+}
+
+/* Mobile viewport fix */
+@supports (-webkit-touch-callout: none) {
+    body {
+        min-height: -webkit-fill-available;
+    }
 }
 
 /* Particle Canvas Background */
@@ -87,6 +95,9 @@ body {
     position: relative;
     z-index: 1;
     animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+    max-width: 1200px;
+    align-items: flex-start;
 }
 
 @keyframes slideIn {
@@ -123,6 +134,17 @@ body {
     transform: translateX(-320px);
     opacity: 0;
     pointer-events: none;
+}
+
+/* Mobile: Default hide history to prevent scroll issues */
+@media (max-width: 768px) {
+    .history-panel {
+        display: none;
+    }
+    
+    .history-panel:not(.hidden) {
+        display: flex;
+    }
 }
 
 @keyframes slideInLeft {
@@ -569,31 +591,70 @@ body {
 
 /* Responsive design */
 @media (max-width: 900px) {
+    body {
+        align-items: flex-start;
+        padding: 10px;
+    }
+    
     .app-container {
         flex-direction: column;
+        align-items: center;
+        width: 100%;
     }
     
     .history-panel {
         width: 100%;
-        max-height: 200px;
+        max-width: 100%;
+        max-height: 250px;
         animation: slideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        margin-bottom: 15px;
+    }
+    
+    .calculator-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .calculator {
+        width: 100%;
+        max-width: 500px;
     }
 }
 
 @media (max-width: 480px) {
+    body {
+        padding: 5px;
+    }
+    
     .calculator {
-        padding: 20px;
+        padding: 20px 15px;
         max-width: 100%;
     }
     
     .calculator-header h1 {
-        font-size: 22px;
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+    
+    .control-btn {
+        padding: 8px;
+    }
+    
+    .display-container {
+        margin-bottom: 20px;
+    }
+    
+    .expression-line {
+        font-size: 14px;
+        padding: 0 15px 5px;
     }
     
     .display {
-        height: 70px;
+        height: 65px;
         font-size: 28px;
         padding: 15px;
+        letter-spacing: 2px;
     }
     
     .btn {
@@ -601,8 +662,21 @@ body {
         font-size: 16px;
     }
     
+    .btn-equals {
+        font-size: 22px !important;
+    }
+    
     .buttons-grid {
         gap: 8px;
+    }
+    
+    .history-panel {
+        padding: 15px;
+        max-height: 200px;
+    }
+    
+    .history-header h2 {
+        font-size: 16px;
     }
 }
 

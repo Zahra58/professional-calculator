@@ -232,11 +232,23 @@ soundToggle.addEventListener('click', () => {
 
 historyToggle.addEventListener('click', () => {
     historyVisible = !historyVisible;
-    if (historyVisible) {
-        historyPanel.classList.remove('hidden');
+    
+    // On mobile, use display toggle; on desktop, use transform animation
+    if (window.innerWidth <= 768) {
+        if (historyVisible) {
+            historyPanel.style.display = 'flex';
+            historyPanel.classList.remove('hidden');
+        } else {
+            historyPanel.style.display = 'none';
+        }
     } else {
-        historyPanel.classList.add('hidden');
+        if (historyVisible) {
+            historyPanel.classList.remove('hidden');
+        } else {
+            historyPanel.classList.add('hidden');
+        }
     }
+    
     playSound('click');
 });
 
